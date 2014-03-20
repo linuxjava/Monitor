@@ -95,10 +95,14 @@
         <item name="android:text">@string/init_time</item>
     </style>
     
-     <style name="function_desc_text" parent="width_match_height_match">
+     <style name="function_desc_text" parent="width_match_height_wrap">
         <item name="android:textSize">12.0sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/grey_text2</item>
+    </style>
+    
+     <style name="time_wheel" parent="width_wrap_height_match">
+        <item name="android:layout_weight">1.0</item>
     </style>
 
 </resources>

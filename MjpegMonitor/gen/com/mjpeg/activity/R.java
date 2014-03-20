@@ -224,6 +224,7 @@ public final class R {
         public static final int tab_setting=0x7f08000c;
         public static final int tile_imagebtn=0x7f080005;
         public static final int time_txt=0x7f08000d;
+        public static final int time_wheel=0x7f08000f;
         public static final int timer_recording_img=0x7f080007;
         public static final int timer_recording_text=0x7f080006;
         public static final int width_match_height_match=0x7f080003;
