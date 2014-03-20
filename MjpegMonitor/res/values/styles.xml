@@ -75,5 +75,30 @@
         <item name="android:singleLine">true</item>
         <item name="android:background">@drawable/textfield_selector</item>
     </style>
+    
+     <style name="tab_setting">
+        <item name="android:textSize">17.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">35dip</item>
+        <item name="android:button">@null</item>
+        <item name="android:layout_weight">1.0</item>
+        <item name="android:textColor">@drawable/text_black_white_selector</item>
+    </style>
+    
+     <style name="time_txt" parent="width_wrap_height_wrap">
+        <item name="android:textSize">40.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/blue_text</item>
+        <item name="android:text">@string/init_time</item>
+    </style>
+    
+     <style name="function_desc_text" parent="width_match_height_match">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/grey_text2</item>
+    </style>
 
 </resources>

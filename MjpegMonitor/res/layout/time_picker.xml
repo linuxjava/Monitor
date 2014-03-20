@@ -1,0 +1,117 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/width_match_height_match"
+    android:orientation="vertical" >
+
+    <!-- 顶部bar -->
+
+    <RelativeLayout
+        android:id="@+id/top_bar"
+        style="@style/width_match_height_wrap"
+        android:background="@drawable/athome_camera_title_bar2"
+        android:orientation="horizontal"
+        android:paddingLeft="10.0dp"
+        android:paddingRight="10.0dp" >
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            style="@style/tile_imagebtn"
+            android:background="@android:color/transparent"
+            android:src="@drawable/btn_back_selector" />
+
+        <TextView
+            style="@style/width_wrap_height_wrap"
+            android:layout_centerInParent="true"
+            android:text="@string/motion_timer"
+            android:textColor="@android:color/white"
+            android:textSize="20.0sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/btn_save"
+            style="@style/tile_imagebtn"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/athome_btn_save_selector" />
+    </RelativeLayout>
+
+    <LinearLayout
+        style="@style/width_match_height_wrap"
+        android:background="@drawable/main_background2"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <!-- 时间设置按钮 -->
+
+        <RadioGroup
+            android:id="@+id/tab_time_radiogroup"
+            style="@style/width_match_height_wrap"
+            android:layout_marginLeft="18.0dp"
+            android:layout_marginRight="18.0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/tab_setting_left_button"
+                style="@style/tab_setting"
+                android:background="@drawable/athome_tab_setting_left_button_selector"
+                android:text="@string/start_time" />
+
+            <RadioButton
+                android:id="@+id/tab_setting_right_button"
+                style="@style/tab_setting"
+                android:background="@drawable/athome_tab_setting_right_button_selector"
+                android:text="@string/end_time" />
+        </RadioGroup>
+
+        <!-- 时间设置文字 -->
+
+        <LinearLayout
+            style="@style/width_match_height_wrap"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/start_time"
+                style="@style/time_txt" />
+
+            <TextView
+                style="@style/time_txt"
+                android:text="@string/dash" />
+
+            <TextView
+                android:id="@+id/end_time"
+                style="@style/time_txt" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/desc"
+            style="@style/function_desc_text"
+            android:text="@string/time_equal_recording_no"
+            android:layout_weight="1"
+            android:gravity="center" />
+        
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="170dip"
+            android:layout_weight="1.0"
+            android:gravity="bottom|center">
+            
+            <kankan.wheel.widget.WheelView
+                android:id="@+id/hours"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:layout_marginBottom="1.0dip" />
+
+            <kankan.wheel.widget.WheelView
+                android:id="@+id/mins"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:layout_marginBottom="1.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

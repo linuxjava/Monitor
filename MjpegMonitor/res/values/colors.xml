@@ -4,4 +4,7 @@
     <color name="qqblue">#ff54acea</color>
     <color name="transparent">#00000000</color>
     <color name="black">#ff000000</color>
+    <color name="blue_text2">#ff818181</color>
+    <color name="blue_text">#ff303746</color>
+    <color name="grey_text2">#ff8d99a4</color>
 </resources>

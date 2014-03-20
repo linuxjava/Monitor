@@ -22,6 +22,13 @@
 	<string name="timer_recording_txt">定时录制</string>
 	<string name="motion_detect_txt">运动侦测</string>
 	
+	<string name="motion_timer">选择时间段</string>
+	<string name="start_time">开始时间</string>
+	<string name="end_time">结束时间</string>
+	<string name="init_time">00:00</string>
+	<string name="dash">-</string>
+	<string name="time_equal_recording_no">起始时间等于结束时间，不启动预设录制视频</string>
+	
 	<string-array name="more_str">
         <item>全屏</item>
         <item>相册</item>
