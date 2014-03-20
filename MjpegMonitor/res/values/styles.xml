@@ -1,0 +1,79 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--主题  -->
+    <style name="MyDialogStyle">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+    
+     <style name="width_wrap_height_wrap">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    
+    <style name="width_match_height_wrap">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    
+    <style name="width_match_height_match">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    
+     <style name="width_wrap_height_match">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    
+    <style name="tile_imagebtn" parent="width_wrap_height_wrap">
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+    
+    <style name="timer_recording_text" parent="width_wrap_height_wrap">
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textColor">#ff232324</item>
+        <item name="android:textSize">@dimen/timer_recording_textsize</item>
+    </style>
+    
+    <style name="timer_recording_img" parent="width_wrap_height_wrap">
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="camera_view_title" parent="width_wrap_height_wrap">
+        <item name="android:textSize">20.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    
+     <style name="ip_port_layout_txt">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">65.0dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">15.0dp</item>
+        <item name="android:paddingRight">15.0dp</item>
+    </style>
+    
+     <style name="black_17_width_wrap_height_match_txt" parent="width_wrap_height_match">
+        <item name="android:textSize">17.0sp</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:layout_marginRight">15.0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    
+     <style name="black_17_width_match_height_wrap_txt" parent="width_match_height_wrap">
+        <item name="android:textSize">17.0sp</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@drawable/textfield_selector</item>
+    </style>
+
+</resources>

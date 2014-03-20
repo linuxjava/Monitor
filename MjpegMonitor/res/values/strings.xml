@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">百问网</string>
+    <string name="login">登陆</string>
+    <string name="login_hint">connecting&#8230;</string>
+    <string name="start_wifi">请开启wifi</string>
+    <string name="connect_failed">自动连接失败，请手动连接</string>
+    <string name="exit_title">视频流</string>
+    <string name="exit_hint">确定要退出？</string>
+    <string name="exit_btn_yes">是</string>
+    <string name="exit_btn_no">否</string>
+    <string name="ip">地&#160;&#160;址:</string>
+    <string name="port">端&#160;&#160;口:</string>
+    <string name="ip_hint">请输入IP地址</string>
+    <string name="port_hint">端口1000到65535</string>
+    <string name="connect">连接</string>
+    
+	<string name="live_video_title">实时视频</string>
+    <string name="video_name">live&#160;video</string>
+	<string name="camrea_record_switch">录制开关</string>
+	<string name="timer_recording_txt">定时录制</string>
+	<string name="motion_detect_txt">运动侦测</string>
+	
+	<string-array name="more_str">
+        <item>全屏</item>
+        <item>相册</item>
+        <item>视频</item>
+        <item>夜视</item>
+        <item>设置</item>
+    </string-array>
+</resources>

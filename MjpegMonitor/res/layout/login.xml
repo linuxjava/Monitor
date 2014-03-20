@@ -1,0 +1,89 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/width_match_height_match"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/top_bar"
+        style="@style/width_match_height_wrap"
+        android:background="@drawable/athome_camera_title_bar2"
+        android:gravity="center" >
+
+        <TextView
+            style="@style/camera_view_title"
+            android:text="@string/login" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/width_match_height_match"
+        android:background="@drawable/main_background2"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="25.0dp"
+        android:paddingRight="25.0dp" >
+
+        <TextView
+            android:id="@+id/hintTv"
+            style="@style/width_wrap_height_wrap"
+            android:text="@string/login_hint"
+            android:textColor="@android:color/black" />
+
+        <!-- ip -->
+
+        <RelativeLayout
+            style="@style/ip_port_layout_txt"
+            android:background="@drawable/cell_top_item" >
+
+            <TextView
+                android:id="@+id/ipStr"
+                style="@style/black_17_width_wrap_height_match_txt"
+                android:text="@string/ip" />
+
+            <AutoCompleteTextView
+                android:id="@+id/ip"
+                style="@style/black_17_width_match_height_wrap_txt"
+                android:layout_toRightOf="@+id/ipStr"
+                android:hint="@string/ip_hint"
+                android:paddingRight="30dip" />
+
+            <ImageView
+                android:id="@+id/history_user"
+                style="@style/width_wrap_height_wrap"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="3dip"
+                android:layout_marginTop="5dip"
+                android:background="@drawable/comboxbtn"
+                android:onClick="showDropDown" />
+        </RelativeLayout>
+
+        <!-- port -->
+
+        <LinearLayout
+            style="@style/ip_port_layout_txt"
+            android:background="@drawable/cell_bottom_item" >
+
+            <TextView
+                style="@style/black_17_width_wrap_height_match_txt"
+                android:text="@string/port" />
+
+            <EditText
+                android:id="@+id/port"
+                style="@style/black_17_width_match_height_wrap_txt"
+                android:hint="@string/port_hint"
+                android:paddingRight="10.0dip"
+                android:text="5432" />
+        </LinearLayout>
+        <!-- 登录按钮 -->
+
+        <Button
+            android:id="@+id/linkbtn"
+            style="@style/width_match_height_wrap"
+            android:layout_marginTop="20.0dip"
+            android:background="@drawable/server_login_btn_selector"
+            android:onClick="connectBtn"
+            android:text="@string/login"
+            android:textColor="@android:color/white"
+            android:textSize="18.0sp" />
+    </LinearLayout>
+
+</LinearLayout>

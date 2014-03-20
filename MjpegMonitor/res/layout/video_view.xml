@@ -1,0 +1,143 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/width_match_height_match"
+    android:orientation="vertical" >
+
+    <!-- 顶部bar -->
+
+    <RelativeLayout
+        android:id="@+id/top_bar"
+        style="@style/width_match_height_wrap"
+        android:background="@drawable/athome_camera_title_bar2"
+        android:orientation="horizontal"
+        android:paddingLeft="10.0dp"
+        android:paddingRight="10.0dp" >
+
+        <ImageButton
+            android:id="@+id/take_photo_btn"
+            style="@style/tile_imagebtn"
+            android:background="@android:color/transparent"
+            android:src="@drawable/btn_takephoto_selector" />
+
+        <TextView
+            style="@style/width_wrap_height_wrap"
+            android:layout_centerInParent="true"
+            android:text="@string/live_video_title"
+            android:textColor="@android:color/white"
+            android:textSize="20.0sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/more"
+            style="@style/tile_imagebtn"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/btn_more_selector" />
+    </RelativeLayout>
+
+    <!-- 显示和控制区 -->
+
+    <RelativeLayout
+        style="@style/width_match_height_match"
+        android:background="@drawable/main_background2"
+        android:gravity="center_horizontal" >
+
+        <RelativeLayout
+            android:id="@+id/bg1"
+            style="@style/width_wrap_height_wrap"
+            android:background="@drawable/live_video_bg_no_btn" >
+
+            <TextView
+                android:id="@+id/video_name"
+                style="@style/width_wrap_height_wrap"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_vertical"
+                android:text="@string/video_name"
+                android:textColor="#ffc8c8c8"
+                android:textSize="@dimen/video_name_textsize" />
+
+            <com.mjpeg.view.MjpegView
+                android:id="@+id/video_img"
+                style="@style/width_match_height_wrap"
+                android:layout_below="@+id/video_name"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/athome_camera_tab_camera_view_bg_clip" />
+
+            <ImageView
+                style="@style/width_wrap_height_wrap"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/camera_index1" />
+
+            <!-- 录制开关 -->
+
+            <TextView
+                android:id="@+id/camera_switcher_txt"
+                style="@style/width_match_height_wrap"
+                android:layout_below="@+id/video_img"
+                android:gravity="center"
+                android:text="@string/camrea_record_switch"
+                android:textColor="#ffbfc5c8"
+                android:textSize="@dimen/camera_switcher_textsize" />
+
+            <LinearLayout
+                style="@style/width_match_height_wrap"
+                android:layout_below="@+id/video_img"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <ToggleButton
+                    android:id="@+id/camera_on_off_switcher"
+                    style="@style/width_wrap_height_wrap"
+                    android:background="@drawable/btn_toggle_selector"
+                    android:checked="false"
+                    android:textOff=""
+                    android:textOn="" />
+
+                <ImageView
+                    android:id="@+id/record_led"
+                    style="@style/width_wrap_height_wrap"
+                    android:src="@drawable/recording_not" />
+            </LinearLayout>
+
+            <!-- 定时录制和运动检测设置按钮 -->
+
+            <RelativeLayout
+                android:id="@+id/timer_recording_layout"
+                style="@style/width_match_height_wrap"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    style="@style/width_wrap_height_wrap"
+                    android:orientation="vertical" >
+
+                    <ImageButton
+                        android:id="@+id/timer_recording"
+                        style="@style/timer_recording_img"
+                        android:src="@drawable/btn_live_recording_selector" />
+
+                    <TextView
+                        style="@style/timer_recording_text"
+                        android:text="@string/timer_recording_txt" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/width_wrap_height_wrap"
+                    android:layout_alignParentRight="true"
+                    android:orientation="vertical" >
+
+                    <ImageButton
+                        android:id="@+id/motion_detect"
+                        style="@style/timer_recording_img"
+                        android:src="@drawable/btn_live_trigger_selector" />
+
+                    <TextView
+                        style="@style/timer_recording_text"
+                        android:text="@string/motion_detect_txt" />
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>
