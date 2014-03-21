@@ -49,12 +49,14 @@ public class FlashActivity extends Activity {
 	private DhcpInfo mDpInfo = null;
 	private WifiManager mWifiManager = null;
 	private Button mLinkBtn = null;
-	private float mHeightRatio = 0;// 高度缩放比例
 	private InputStream is = null;
 	private SharedPreferences sp = null;
 	private Editor editor = null;
 	private String mPortStr = "5432";
+	private static final int MAIN_BG_WIDTH = 480;
 	private static final int MAIN_BG_HEIGHT = 682;
+	private float mWidthRatio = 0;// 宽度缩放比例
+	private float mHeightRatio = 0;// 高度缩放比例
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,65 +65,69 @@ public class FlashActivity extends Activity {
 
 		init();
 		int state = mWifiManager.getWifiState();
-		
+
 		if (state != WifiManager.WIFI_STATE_ENABLED) {
 			Util.showMsg(this, "请打开wifi", false);
 		} else
 			autoConnect();
 	}
-	
+
 	@Override
 	protected void onDestroy() {
 		is = null;
 		unregisterReceiver(mWifiReceiver);
 		super.onDestroy();
 	}
-	
-	private void init(){
+
+	private void init() {
 		mHintTxt = (TextView) findViewById(R.id.hintTv);
 		mIpEdt = (AutoCompleteTextView) findViewById(R.id.ip);
 		mPortEdt = (EditText) findViewById(R.id.port);
 		mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
 		mLinkBtn = (Button) findViewById(R.id.linkbtn);
 		mTopBarLayout = (LinearLayout) findViewById(R.id.top_bar);
-		
+
 		initLayout();
-		//初始化SharedPreferences文件
+		// 初始化SharedPreferences文件
 		initSp();
-		/*注册wifi状态改变监听*/
-		mWifiReceiver=new WifiStateReceiver();
-		IntentFilter filter=new IntentFilter();
-		filter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
-		registerReceiver(mWifiReceiver,filter);
+		/* 注册wifi状态改变监听 */
+		initWifi();
 	}
-	
-	private void initLayout(){
-		// 获取屏幕分辨率
-		DisplayMetrics mDisplayMetrics = getResources().getDisplayMetrics();
-		SysConfig.mScreenWidth = mDisplayMetrics.widthPixels;;
-		SysConfig.mScreenHeight = mDisplayMetrics.heightPixels;
+
+	private void initLayout() {
 		// 获取状态栏高度
 		SysConfig.mStateBarHeight = Util.getStatusBarHeight(mContext);
-		//待绘图完成后获取mTopBarLayout高度
+		// 获取屏幕分辨率
+		DisplayMetrics mDisplayMetrics = getResources().getDisplayMetrics();
+		SysConfig.mScreenWidth = mDisplayMetrics.widthPixels;
+		SysConfig.mScreenHeight = mDisplayMetrics.heightPixels;
+		
+
+		// 待绘图完成后获取mTopBarLayout高度
 		ViewTreeObserver vto2 = mTopBarLayout.getViewTreeObserver();
 		vto2.addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
 			@Override
 			public void onGlobalLayout() {
 				mTopBarLayout.getViewTreeObserver()
 						.removeGlobalOnLayoutListener(this);
-				int mBgHeight = (int)(SysConfig.mScreenHeight - SysConfig.mStateBarHeight - mTopBarLayout.getHeight());
-				mHeightRatio = mBgHeight / MAIN_BG_HEIGHT;
+				float mBgHeight = SysConfig.mScreenHeight
+						- SysConfig.mStateBarHeight - mTopBarLayout.getHeight();
+				// 缩放比例
+				SysConfig.mWidthRatio = mWidthRatio = SysConfig.mScreenWidth / MAIN_BG_WIDTH;
+				SysConfig.mHeightRatio = mHeightRatio = mBgHeight / MAIN_BG_HEIGHT;
+				//设置mHintTxt
 				LayoutParams para = mHintTxt.getLayoutParams();
-				((LinearLayout.LayoutParams)para).setMargins(0, mBgHeight/5, 0, 0);
+				((LinearLayout.LayoutParams) para).setMargins(0, (int)(mBgHeight / 5),
+						0, 0);
 				mHintTxt.setLayoutParams(para);
 			}
 		});
 	}
-	
+
 	/**
 	 * 初始化sp文件，sp文件用于记录成功登陆的ip和port
 	 */
-	private void initSp(){
+	private void initSp() {
 		sp = getSharedPreferences("config", MODE_PRIVATE);
 		editor = sp.edit();
 		String names[] = sp.getString("ip", "").split(":");
@@ -130,6 +136,13 @@ public class FlashActivity extends Activity {
 		mIpEdt.setAdapter(adapter);
 	}
 	
+	private void initWifi(){
+		mWifiReceiver = new WifiStateReceiver();
+		IntentFilter filter = new IntentFilter();
+		filter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
+		registerReceiver(mWifiReceiver, filter);
+	}
+
 	/**
 	 * 自动连接
 	 * 
@@ -159,8 +172,8 @@ public class FlashActivity extends Activity {
 		String ip = mIpEdt.getText().toString();
 		mPortStr = mPortEdt.getText().toString();
 
-		//port不能问空
-		if (!mPortStr.equals("")&&checkAddr(ip, Integer.valueOf(mPortStr))) {
+		// port不能问空
+		if (!mPortStr.equals("") && checkAddr(ip, Integer.valueOf(mPortStr))) {
 			new ConnectTask().execute(ip);
 		} else {
 			Util.showMsg(this, "请检查地址和端口", true);
@@ -190,7 +203,8 @@ public class FlashActivity extends Activity {
 				String ip = params[i];
 
 				if (ip.split("\\.").length == 4) {
-					String action = "http://" + ip + ":"+ mPortStr + "/?action=stream";
+					String action = "http://" + ip + ":" + mPortStr
+							+ "/?action=stream";
 					is = http(action);
 					if (is != null) {
 						writeSp(ip);
@@ -208,17 +222,18 @@ public class FlashActivity extends Activity {
 			if (is != null) {
 				startActivity(new Intent(FlashActivity.this, MainActivity.class));
 				finish();
-			} else{
-				mHintTxt.setText(getResources()
-						.getString(R.string.connect_failed));
+			} else {
+				mHintTxt.setText(getResources().getString(
+						R.string.connect_failed));
 				Util.showMsg(mContext, "连接失败", true);
 			}
 
 			super.onPostExecute(result);
 		}
-		
+
 		/**
 		 * http连接
+		 * 
 		 * @param url
 		 * @return
 		 */
@@ -242,54 +257,57 @@ public class FlashActivity extends Activity {
 
 	/**
 	 * 写SharedPreferences
+	 * 
 	 * @param ip
 	 */
-	private void writeSp(String data) {		
-		if(!sp.contains("ip")){
+	private void writeSp(String data) {
+		if (!sp.contains("ip")) {
 			editor.putString("ip", data);
 			editor.commit();
 			return;
 		}
-		
+
 		String ip = sp.getString("ip", "");
 		String[] ips = ip.split(":");
-		
-		if(ips.length >= 10){
+
+		if (ips.length >= 10) {
 			editor.clear();
 			editor.commit();
 			editor.putString("ip", data);
 			editor.commit();
 			return;
 		}
-		
-		for(int i=0; i<ips.length; i++){
-			if(ips[i].equals(data))
+
+		for (int i = 0; i < ips.length; i++) {
+			if (ips[i].equals(data))
 				return;
 		}
-		editor.putString("ip", data+":"+ip);
+		editor.putString("ip", data + ":" + ip);
 		editor.commit();
 	}
-	
-	/*下拉选项*/
-	public void showDropDown(View v){
+
+	/* 下拉选项 */
+	public void showDropDown(View v) {
 		mIpEdt.showDropDown();
 	}
-	
+
 	public class WifiStateReceiver extends BroadcastReceiver {
 
 		@Override
 		public void onReceive(Context arg0, Intent intent) {
-			if(intent.getAction().equals(WifiManager.WIFI_STATE_CHANGED_ACTION))
-			{
-				int wifistate=intent.getIntExtra(WifiManager.EXTRA_WIFI_STATE,WifiManager.WIFI_STATE_DISABLED);
-				if(wifistate==WifiManager.WIFI_STATE_DISABLED){//关闭
-					//mLinkBtn.setEnabled(false);
-				}else{//开启
+			if (intent.getAction()
+					.equals(WifiManager.WIFI_STATE_CHANGED_ACTION)) {
+				int wifistate = intent.getIntExtra(
+						WifiManager.EXTRA_WIFI_STATE,
+						WifiManager.WIFI_STATE_DISABLED);
+				if (wifistate == WifiManager.WIFI_STATE_DISABLED) {// 关闭
+					// mLinkBtn.setEnabled(false);
+				} else {// 开启
 					mLinkBtn.setEnabled(true);
 				}
-					
+
 			}
 		}
-		
+
 	}
 }

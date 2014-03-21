@@ -48,8 +48,6 @@ public class MainActivity extends Activity implements
 		OnClickListener, OnItemClickListener {
 	public static MainActivity instance = null;
 	private Context mContext;
-	private static final int MAIN_BG_WIDTH = 480;
-	private static final int MAIN_BG_HEIGHT = 682;
 	private static final int BG_IMG_WIDTH = 426;
 	private static final int BG_IMG_HEIGHT = 626;
 	private static final int VIDEO_NAME_HEIGHT = 48;
@@ -68,12 +66,10 @@ public class MainActivity extends Activity implements
 	private ImageButton mTimerBtn;
 	private ImageButton mRecordingBtn;
 	private RelativeLayout mBgReLayout;
-	private RelativeLayout mTopBarLayout;
 	private RelativeLayout mTimerRecordingLayout;
 	private PopMenu mPopMenu;
-	private float mWidthRatio = 0;// 宽度缩放比例
-	private float mHeightRatio = 0;// 高度缩放比例
-	private int mTopBarHeight = 0;// 顶部横条高度
+	private float mWidthRatio = SysConfig.mWidthRatio;// 宽度缩放比例
+	private float mHeightRatio = SysConfig.mHeightRatio;// 高度缩放比例
 	private String mMoreStr[] = null;
 	private MjpegInputStream mis = null;
 	private MjpegView mjpegView = null;
@@ -97,7 +93,6 @@ public class MainActivity extends Activity implements
 		mVideoName = (TextView) findViewById(R.id.video_name);
 		mCameraSwitcher = (TextView) findViewById(R.id.camera_switcher_txt);
 		mBgReLayout = (RelativeLayout) findViewById(R.id.bg1);
-		mTopBarLayout = (RelativeLayout) findViewById(R.id.top_bar);
 		mTimerRecordingLayout = (RelativeLayout) findViewById(R.id.timer_recording_layout);
 		mToggleBtn = (ToggleButton) findViewById(R.id.camera_on_off_switcher);
 		mTakePhotoBtn = (ImageButton) findViewById(R.id.take_photo_btn);
@@ -114,25 +109,12 @@ public class MainActivity extends Activity implements
 		mPopMenu.addItems(mMoreStr);
 		mPopMenu.setOnItemClickListener(this);
 
-		ViewTreeObserver vto2 = mTopBarLayout.getViewTreeObserver();
-		vto2.addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
-			@Override
-			public void onGlobalLayout() {
-				mTopBarLayout.getViewTreeObserver()
-						.removeGlobalOnLayoutListener(this);
-				mTopBarHeight = mTopBarLayout.getHeight();
-				initLayout();
-				initMjpegView();
-			}
-		});
+		initLayout();
+		initMjpegView();
 	}
 
 	public void initLayout() {
 		LayoutParams para;
-		// 缩放比例
-		mWidthRatio = SysConfig.mScreenWidth / MAIN_BG_WIDTH;
-		mHeightRatio = (SysConfig.mScreenHeight - SysConfig.mStateBarHeight - mTopBarHeight)
-				/ MAIN_BG_HEIGHT;
 		// camera name设置
 		mVideoName.setHeight((int) (mHeightRatio * VIDEO_NAME_HEIGHT));
 		// 背景图设置
@@ -177,7 +159,7 @@ public class MainActivity extends Activity implements
 			shotSnap();
 			break;
 		case R.id.timer_recording:
-			
+			startActivity(new Intent(mContext, TimerPickerActivity.class));
 			break;
 		case R.id.motion_detect:
 			
