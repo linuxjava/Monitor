@@ -1,0 +1,45 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/width_match_height_match"
+    android:orientation="vertical" >
+
+    <!-- 顶部bar -->
+
+    <RelativeLayout
+        android:id="@+id/top_bar"
+        style="@style/top_bar" >
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            style="@style/top_bar_btn"
+            android:src="@drawable/btn_back_selector" />
+
+        <TextView
+            style="@style/top_bar_title_txt"
+            android:text="@string/sensitivity" />
+        
+        <ImageButton
+            android:id="@+id/btn_save"
+            style="@style/top_bar_btn"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/athome_btn_save_selector" />
+    </RelativeLayout>
+    
+    <LinearLayout
+        style="@style/width_match_height_match"
+        android:background="@drawable/main_background2"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+        
+        <ListView
+            android:id="@+id/athome_sensitivity_list_listview"
+            style="@style/width_match_height_match"
+            android:background="@drawable/trans"
+            android:cacheColorHint="@color/transparent"
+            android:divider="@null"
+            android:listSelector="@drawable/trans"
+            android:persistentDrawingCache="all"
+            android:scrollbars="none" />
+    </LinearLayout>
+
+</LinearLayout>

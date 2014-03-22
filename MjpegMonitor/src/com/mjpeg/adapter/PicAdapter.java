@@ -1,8 +1,9 @@
-package com.mjpeg.pic;
+package com.mjpeg.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.mjpeg.activity.R;
+import com.mjpeg.pic.PicEntity;
 
 import android.content.Context;
 import android.view.LayoutInflater;

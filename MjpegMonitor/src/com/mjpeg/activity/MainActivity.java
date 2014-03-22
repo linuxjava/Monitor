@@ -162,7 +162,7 @@ public class MainActivity extends Activity implements
 			startActivity(new Intent(mContext, TimerPickerActivity.class));
 			break;
 		case R.id.motion_detect:
-			
+			startActivity(new Intent(mContext, SensitivityActivity.class));
 			break;
 		}
 	}

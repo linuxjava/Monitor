@@ -9,8 +9,8 @@ import javax.security.auth.callback.Callback;
 
 import tools.Util;
 
-import com.mjpeg.pic.PicAdapter;
-import com.mjpeg.pic.PicAdapter.viewHolder;
+import com.mjpeg.adapter.PicAdapter;
+import com.mjpeg.adapter.PicAdapter.viewHolder;
 import com.mjpeg.pic.PicEntity;
 
 import android.app.Activity;

@@ -71,10 +71,10 @@ public class WheelView extends View {
 	private static final int ADDITIONAL_ITEM_HEIGHT = 32;
 
 	/** Text size */
-	private static final int TEXT_SIZE = 50;
+	private static int TEXT_SIZE = 20;
 
 	/** Top and bottom items offset (to hide that) */
-	private static final int ITEM_OFFSET = TEXT_SIZE / 5;
+	private static final int ITEM_OFFSET = TEXT_SIZE / 8;
 
 	/** Additional width for items layout */
 	private static final int ADDITIONAL_ITEMS_SPACE = 22;
@@ -177,6 +177,8 @@ public class WheelView extends View {
 		return adapter;
 	}
 	
+	//public void set
+	
 	/**
 	 * Sets wheel adapter
 	 * @param adapter the new wheel adapter
@@ -214,6 +216,10 @@ public class WheelView extends View {
 	public void setVisibleItems(int count) {
 		visibleItems = count;
 		invalidate();
+	}
+	
+	public void setTextSize(int s){
+		TEXT_SIZE = s;
 	}
 
 	/**

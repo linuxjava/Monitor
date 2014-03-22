@@ -31,8 +31,16 @@
         <item name="android:layout_height">match_parent</item>
     </style>
     
-    <style name="tile_imagebtn" parent="width_wrap_height_wrap">
+    <style name="top_bar_btn" parent="width_wrap_height_wrap">
         <item name="android:layout_centerVertical">true</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+    
+    <style name="top_bar_title_txt" parent="width_wrap_height_wrap">
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20.0sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
     
     <style name="timer_recording_text" parent="width_wrap_height_wrap">
@@ -104,5 +112,13 @@
      <style name="time_wheel" parent="width_wrap_height_match">
         <item name="android:layout_weight">1.0</item>
     </style>
+    
+          <style name="top_bar" parent="width_match_height_wrap">
+        <item name="android:background">@drawable/athome_camera_title_bar2</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingLeft">7.0dp</item>
+        <item name="android:paddingRight">7.0dp</item>
+    </style>
+     
 
 </resources>

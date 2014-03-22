@@ -29,11 +29,27 @@
 	<string name="dash">-</string>
 	<string name="time_equal_recording_no">起始时间等于结束时间，不启动预设录制视频</string>
 	
+	
+	<string name="sensitivity">选择灵敏度</string>
+	
 	<string-array name="more_str">
         <item>全屏</item>
         <item>相册</item>
         <item>视频</item>
         <item>夜视</item>
         <item>设置</item>
+    </string-array>
+    
+    <string-array name="sensitivity_arr">
+        <item>整个画面的90%发生变化</item>
+        <item>整个画面的80%发生变化</item>
+        <item>整个画面的70%发生变化</item>
+        <item>整个画面的60%发生变化</item>
+        <item>整个画面的50%发生变化</item>
+        <item>整个画面的40%发生变化</item>
+        <item>整个画面的30%发生变化</item>
+        <item>整个画面的20%发生变化</item>
+        <item>整个画面的10%发生变化</item>
+        <item>整个画面的1%发生变化</item>
     </string-array>
 </resources>

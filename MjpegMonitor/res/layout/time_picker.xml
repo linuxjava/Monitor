@@ -7,31 +7,21 @@
 
     <RelativeLayout
         android:id="@+id/top_bar"
-        style="@style/width_match_height_wrap"
-        android:background="@drawable/athome_camera_title_bar2"
-        android:orientation="horizontal"
-        android:paddingLeft="7.0dp"
-        android:paddingRight="7.0dp" >
+        style="@style/top_bar" >
 
         <ImageButton
             android:id="@+id/btn_back"
-            style="@style/tile_imagebtn"
-            android:background="@android:color/transparent"
+            style="@style/top_bar_btn"
             android:src="@drawable/btn_back_selector" />
 
         <TextView
-            style="@style/width_wrap_height_wrap"
-            android:layout_centerInParent="true"
-            android:text="@string/motion_timer"
-            android:textColor="@android:color/white"
-            android:textSize="20.0sp"
-            android:textStyle="bold" />
+            style="@style/top_bar_title_txt"
+            android:text="@string/motion_timer" />
 
         <ImageButton
             android:id="@+id/btn_save"
-            style="@style/tile_imagebtn"
+            style="@style/top_bar_btn"
             android:layout_alignParentRight="true"
-            android:background="@android:color/transparent"
             android:src="@drawable/athome_btn_save_selector" />
     </RelativeLayout>
 
@@ -93,6 +83,7 @@
             android:layout_marginTop="30.0dp" />
         
         <LinearLayout
+            android:id="@+id/wheel_layout"
             style="@style/width_match_height_wrap"
             android:layout_alignParentBottom="true">
             
